@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+    <style>
+        .question-block {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .question-block h3 {
+            margin-top: 0;
+        }
+        .delete-button {
+            color: red;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Quiz</h1>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="title">Quiz Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <div id="questions-container">
+            <div class="question-block">
+                <h3>Question 1</h3>
+                <label>Question:</label>
+                <input type="text" name="questions" required><br>
+                
+                <label>Option 1:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Option 2:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Option 3:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Option 4:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Correct Option:</label>
+                <select name="correct_options" required>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="option4">Option 4</option>
+                </select><br>
+                
+                <button type="button" class="delete-button" onclick="deleteQuestion(this)">Delete Question</button>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addQuestion()">Add Question</button><br><br>
+        <button type="submit">Create Quiz</button>
+    </form>
+    
+    <script>
+        let questionCount = 1;
+        
+        function addQuestion() {
+            questionCount++;
+            const questionBlock = document.createElement('div');
+            questionBlock.className = 'question-block';
+            
+            questionBlock.innerHTML = `
+                <h3>Question ${questionCount}</h3>
+                <label>Question:</label>
+                <input type="text" name="questions" required><br>
+                
+                <label>Option 1:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Option 2:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Option 3:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Option 4:</label>
+                <input type="text" name="options" required><br>
+                
+                <label>Correct Option:</label>
+                <select name="correct_options" required>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="option4">Option 4</option>
+                </select><br>
+                
+                <button type="button" class="delete-button" onclick="deleteQuestion(this)">Delete Question</button>
+            `;
+            
+            document.getElementById('questions-container').appendChild(questionBlock);
+            updateQuestionNumbers();  // Update the question numbers after adding a new question
+        }
+        
+        function deleteQuestion(button) {
+            const questionBlock = button.parentElement;
+            questionBlock.remove();
+            updateQuestionNumbers();
+        }
+        
+        function updateQuestionNumbers() {
+            const questionBlocks = document.querySelectorAll('.question-block');
+            questionBlocks.forEach((block, index) => {
+                block.querySelector('h3').textContent = `Question ${index + 1}`;
+            });
+            questionCount = questionBlocks.length;  // Update questionCount to match the number of blocks
+        }
+    </script>
+    
+</body>
+</html>
