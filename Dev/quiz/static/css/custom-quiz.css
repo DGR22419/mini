@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --foreground: #1a5319;
+  --background: #80af81;
+  --main-bg: #d6efd8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--main-bg);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--foreground);
+}
+
+h1 {
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  background-color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--foreground);
+}
+
+.question input[type="text"],
+.question textarea {
+  width: 100%;
+  font-size: 15px;
+  padding: 0.6rem 0.8rem;
+  margin: 0.3rem 0rem;
+  border: 1px solid var(--foreground);
+  border-radius: 8px;
+  outline: none;
+  color: black;
+  resize: vertical;
+}
+
+.question button {
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.add-option {
+  border: 1px solid green;
+  color: green;
+  background: #fff;
+  margin-right: 1rem;
+}
+
+.delete-question {
+  border: 1px solid red;
+  color: red;
+  background: #fff;
+}
+
+button[type="submit"] {
+  margin-top: 1rem;
+}
+
+button[type="submit"],
+button#addQuestion {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  border: 1px solid var(--foreground);
+  cursor: pointer;
+  font-size: 16px;
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .question input[type="text"],
+  .question textarea {
+    padding: 0.4rem;
+  }
+
+  button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+.option-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.option-group input[type="text"] {
+  flex: 1;
+}
+
+.option-group button.delete-option {
+  background-color: #f00;
+  margin-left: 0.5rem;
+  color: #fff;
+  border: none;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.option-group button.delete-option:hover {
+  background-color: #fff;
+  color: #f00;
+  border: 1px solid red;
+  transition: 0.4s ease;
+}
+
+select {
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  border: 1px solid var(--foreground);
+  color: var(--foreground);
+  outline: none;
+  margin-right: 1rem;
+}
+.question-label {
+  margin: 0.5rem 0rem;
+}
+i {
+  padding: 0.4rem;
+}

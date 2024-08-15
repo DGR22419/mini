@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Quiz</title>
+    <link rel="stylesheet" href="{% static "/css/quiz-v2.css" %}">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Join Quiz: {{ quiz.title }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {% for question in quiz.questions.all %}
+            <div id="questionsContainer">
+                <div class="question-block" id="question1">
+                    <h3>{{ question.question_text }}</h3>
+                    <div class="options-container">
+                        <input type="radio" name="answers_{{ question.id }}" value="option1" required> {{ question.option1 }}
+                    </div>
+                    <div class="options-container">
+                        <input type="radio" name="answers_{{ question.id }}" value="option1" required> {{ question.option2 }}
+                    </div>
+                    <div class="options-container">
+                        <input type="radio" name="answers_{{ question.id }}" value="option1" required> {{ question.option3 }}
+                    </div>
+                    <div class="options-container">
+                        <input type="radio" name="answers_{{ question.id }}" value="option1" required> {{ question.option4 }}
+                    </div>
+                </div>
+            </div>
+                <!-- <h2>{{ question.question_text }}</h2>
+                <label>
+                    <input type="radio" name="answers_{{ question.id }}" value="option1" required> {{ question.option1 }}
+                </label><br>
+                <label>
+                    <input type="radio" name="answers_{{ question.id }}" value="option2" required> {{ question.option2 }}
+                </label><br>
+                <label>
+                    <input type="radio" name="answers_{{ question.id }}" value="option3" required> {{ question.option3 }}
+                </label><br>
+                <label>
+                    <input type="radio" name="answers_{{ question.id }}" value="option4" required> {{ question.option4 }}
+                </label><br><br> -->
+            {% endfor %}
+            <!-- <button type="submit">Submit Quiz</button> -->
+            <button type="submit" id="submitQuizBtn">Submit Quiz</button>
+        </form>
+
+    </div>
+    
+</body>
+</html>
