@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/css/register.css" %}" />
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Signup for QuizBOT</h2>
+        <form method="post" class="registration-form">
+            {% csrf_token %}
+            <!-- <div>
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors }}</div>
+                {% endif %}
+            </div> -->
+            <!-- <div>
+                <label for="id_email">Email:</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="error">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <label for="id_password">Password:</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div class="error">{{ form.password.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <label for="id_confirm_password">Confirm Password:</label>
+                {{ form.confirm_password }}
+                {% if form.confirm_password.errors %}
+                    <div class="error">{{ form.confirm_password.errors }}</div>
+                {% endif %}
+            </div> -->
+
+
+            <input type="text"  name="{{ form.username.name }}" placeholder="Full Name" required />
+
+            
+            <input type="email" placeholder="Email" name="{{ form.email.name }}" required />
+
+
+            <input type="password" placeholder="Password" name="{{ form.password.name }}" required />
+
+
+            <input type="password" placeholder="Password" name="{{ form.confirm_password.name }}" required />
+
+            {% if form.username.errors %}
+                    <h5 class="error">{{ form.username.errors }}</h5>
+            {% else %}
+                    {% if form.email.errors %}
+                            <h5 class="error">{{ form.email.errors }}</h5>
+                    {% else %}           
+                            {% if form.password.errors %}
+                                    <h5 class="error">{{ form.password.errors }}</h5>
+                            {% else %}
+                                    {% if form.confirm_password.errors %}
+                                            <h5 class="error">{{ form.confirm_password.errors }}</h5>
+                                    {% else %}
+                                    {% endif %}
+                            {% endif %}
+                    {% endif %}
+            {% endif %}
+
+
+
+
+
+
+            <!-- <input type="password" placeholder="Confirm Password" name="{{ form.confirm_password }}"/> -->
+            <!-- 
+            {% if form.confirm_password.errors %}
+                    <div class="error">{{ form.confirm_password.errors }}</div>
+            {% endif %} -->
+
+
+
+            <!-- <button type="submit">Signup</button> -->
+            <input type="submit" value="Register" /> 
+            <br>
+            <span
+                >Already have an Account? <a href="/login/">Login</a></span
+            >
+        </form>
+
+    </div>
+</body>
+</html>
