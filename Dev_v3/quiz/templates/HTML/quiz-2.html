@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Quiz by QuizBOT</title>
+    <link rel="stylesheet" href="{% static "/css/quiz-2.css" %}">
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Custom Quiz by QuizBOT</h2>
+        {% csrf_token %}
+        <form id="quizForm">
+            <div class="question-container" id="questionContainer">
+                <div class="question-block" data-question="1">
+                    <h3>Question 1</h3>
+                    <textarea placeholder="Enter Question here..." name="question"></textarea>
+                    <div class="option-block">
+                        <input type="text" placeholder="Option A" name="option">
+                        <button type="button" class="delete-option" onclick="deleteOption(this)">&#128465;</button>
+                    </div>
+                    <div class="option-block">
+                        <input type="text" placeholder="Option B" name="option">
+                        <button type="button" class="delete-option" onclick="deleteOption(this)">&#128465;</button>
+                    </div>
+                    <div class="option-block">
+                        <input type="text" placeholder="Option C" name="option">
+                        <button type="button" class="delete-option" onclick="deleteOption(this)">&#128465;</button>
+                    </div>
+                    <div class="option-block">
+                        <input type="text" placeholder="Option D" name="option">
+                        <button type="button" class="delete-option" onclick="deleteOption(this)">&#128465;</button>
+                    </div>
+                    <div class="control-buttons">
+                        <select name="answer">
+                            <option selected disabled>Select Answer</option>
+                            <option value="A">Option A</option>
+                            <option value="B">Option B</option>
+                            <option value="C">Option C</option>
+                            <option value="D">Option D</option>
+                        </select>
+                        <button type="button" onclick="addOption(this)">Add Option</button>
+                        <button type="button" onclick="deleteQuestion(this)" class="delete-question">Delete Question</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" onclick="addQuestion()">Add Another Question</button>
+            <button type="submit">Submit Quiz</button>
+        </form>
+    </div>
+    <script src="{% static "/JavaScript/quiz-2.js" %}"></script>
+</body>
+</html>

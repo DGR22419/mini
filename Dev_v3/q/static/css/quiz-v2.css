@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EAF7EA;
+    margin: 30px 0 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Changed to flex-start to allow scrolling */
+    min-height: 100vh;
+    overflow-y: auto; /* Ensure the body scrolls if content overflows */
+}
+
+.quiz-container {
+    background-color: #D2E7D2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    overflow-y: auto;
+}
+
+.quiz-container h1 {
+    text-align: center;
+    color: #2A7D2A;
+}
+
+.question-block {
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #C5ECC5;
+}
+
+.question-block label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.question-block textarea {
+    width: 97%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #C5ECC5;
+    resize: none;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.options-container input.option {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #C5ECC5;
+}
+
+.question-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-answer, .delete-question-btn {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.select-answer {
+    width: 40%;
+    border: 1px solid #C5ECC5;
+}
+
+.delete-question-btn {
+    background-color: #F44336;
+    color: white;
+}
+
+#addQuestionBtn, #submitQuizBtn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#addQuestionBtn {
+    background-color: #4CAF50;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#submitQuizBtn {
+    background-color: #2A7D2A;
+    color: white;
+}

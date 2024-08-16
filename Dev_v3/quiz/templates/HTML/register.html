@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/css/register.css" %}" />
+  </head>
+  <body>
+    <div class="registration-container">
+      <h2>Register to QuizBOT</h2>
+      <form class="registration-form" method="post">
+        <!-- <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Confirm Password" required />
+        <input type="submit" value="Register" /> -->
+
+        {% csrf_token %}
+        <input type="text"  name="{{ form.username.name }}" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" name="{{ form.email.name }}" required />
+        <input type="password" placeholder="Password" name="{{ form.password1.name }}"  required />
+        <input type="password" placeholder="Confirm Password" name="{{ form.password2.name }}" required />
+
+        {% if password_error %}
+            <div class="errors">
+                <ul>
+                    {% for error in password_error %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <input type="submit" value="Register" /> 
+        <span
+          >Already have an Account? <a href="/login/">Login</a></span
+        >
+      </form>
+    </div>
+  </body>
+</html>
