@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d0e7d0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.quiz-container {
+    background-color: #eaf4ea;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.question-block {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.option-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.option-block input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.delete-option {
+    background-color: #ff4d4d;
+    border: none;
+    padding: 5px;
+    margin-left: 10px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="button"] {
+    background-color: #28a745;
+    color: #fff;
+}
+
+button.delete-question {
+    background-color: #ff4d4d;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    width: 100%;
+    margin-top: 20px;
+}

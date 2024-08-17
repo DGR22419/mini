@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --foreground: #1a5319;
+  --background: #80af81;
+  --main-bg: #d6efd8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--main-bg);
+  padding: 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--foreground);
+}
+
+#quizForm {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--foreground);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--foreground);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--foreground);
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--foreground);
+  background: transparent;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+button {
+  color: var(--foreground);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease;
+  background-color: var(--main-bg);
+  border: 1px solid var(--foreground);
+  margin: 0px 8px;
+}
+
+button:hover {
+  background-color: var(--foreground);
+  color: var(--main-bg);
+}
+
+button.remove-option {
+  background-color: #ff0019;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  transition: 0.3s ease-in;
+}
+
+button.remove-option:hover {
+  color: #f00;
+  background-color: #fff;
+}
+
+/* Options Container */
+#optionsContainer {
+  margin: 20px 0px;
+}
+
+/* Option Container Styling */
+.option-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid var(--background);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.option-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--foreground);
+  background: transparent;
+  outline: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.option-container:last-child {
+  margin-bottom: 0;
+}
+
+/* Answer Container */
+#answerContainer {
+  margin: 20px 0px;
+}
+
+/* Option Container Styling */
+.answer-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid var(--background);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.answer-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--foreground);
+  background: transparent;
+  outline: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  #quizForm {
+    padding: 15px;
+  }
+
+  textarea,
+  .option-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .option-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .option-input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
