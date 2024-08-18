@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  {% csrf_token %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Quiz</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static "/css/custom-quiz.css" %}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create Quiz by QuizBOT</h1>
+      <form id="quizForm" method="post" action="/get-quiz">
+        {% csrf_token %}
+        <div id="questionsContainer">
+          <!-- Questions will be added dynamically here -->
+        </div>
+        <button type="button" id="addQuestion">Add Another Question</button>
+        <!-- <button type="button" id="addQuestion" onclick="/home/">Cancel Quiz</button> -->
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <form method="get" id="quizForm" action="/home/">
+        <button type="submit">Cancel Quiz</button>
+      </form>
+    </div>
+    <script src="{% static "/JavaScript/custom-quiz.js" %}"></script>
+  </body>
+</html>

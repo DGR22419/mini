@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Quiz | QuizBOT</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/custom-quiz.css" />
+
+    <style>
+      select {
+        padding: 6px;
+      }
+      option {
+        padding: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create a Custom Quiz</h1>
+
+    <!-- <div class="container">
+      <h3>Select the category of questions</h3>
+      <select name="" id="">
+        <option value="">MCQs</option>
+        <option value="">Fill in the blanks</option>
+        <option value="">True/False</option>
+      </select>
+      <br />
+      <br />
+      <button type="submit">Submit</button>
+    </div> -->
+
+    <form id="quizForm">
+      <div>
+        <label for="question">Write Question:</label>
+        <textarea
+          id="question"
+          name="question"
+          rows="3"
+          cols="50"
+          required
+        ></textarea>
+      </div>
+
+      <div id="optionsContainer">
+        <div class="option-container">
+          <input
+            type="text"
+            class="option-input"
+            name="option"
+            placeholder="Enter Option"
+            required
+          />
+          <button type="button" class="remove-option">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
+      </div>
+      <div id="answerContainer">
+        <div class="answer-container">
+          <input
+            type="text"
+            class="answer-input"
+            name="answer"
+            placeholder="Enter Answer"
+            required
+          />
+        </div>
+      </div>
+
+      <button type="button" id="addOption">Add Option</button>
+      <button type="submit">Submit Quiz</button>
+    </form>
+
+    <script src="/JavaScript/custom-quiz.js"></script>
+  </body>
+</html>

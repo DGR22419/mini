@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{% static '/css/login_v2.css' %} " />
+    <style>
+      .error {
+          color: red;
+          font-size: 0.9em;
+      }
+      .form-group {
+          margin-bottom: 15px;
+      }
+      label {
+          display: block;
+          margin-bottom: 5px;
+      }
+      input {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+      }
+      .submit-btn {
+          padding: 10px 20px;
+          background-color: #28a745;
+          color: white;
+          border: none;
+          cursor: pointer;
+      }
+      .submit-btn:hover {
+          background-color: #218838;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login to QuizBOT</h2>
+      <form class="login-form" method="post">
+        {% csrf_token %}
+        <!-- <input type="text" placeholder="Username" name="{{ form.username }}"  required /> -->
+        <input type="text"  name="{{ form.username.name }}"  placeholder="Username" required />
+        <!-- {{ form.username }} -->
+        <input type="password" name="{{ form.password.name }}"  placeholder="Password" required />
+
+        {% if form.errors %}
+          <div class="errors">
+                  {% for field, errors in form.errors.items %}
+                      {% for error in errors %}
+                          <!-- <p>{{ error }}</p> -->
+                           <h5 class="error">Username or Password Incorrect .</h5>
+                      {% endfor %}
+                  {% endfor %}
+          </div>
+      {% endif %}
+
+        <input type="submit" value="Login" />
+        <span
+          >Don't have an Account?
+          <a href="/signup/">Register</a></span
+        >
+      </form>
+    </div>
+  </body>
+</html>
