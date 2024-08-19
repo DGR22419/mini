@@ -1,7 +1,8 @@
 from django.db import models
 import uuid
 import random
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from login.models import *
 
 class Quiz(models.Model):
     title = models.CharField(max_length=255)

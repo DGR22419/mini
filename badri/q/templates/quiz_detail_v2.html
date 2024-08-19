@@ -12,7 +12,7 @@
         <h1>{{ quiz.title }}</h1>
         <h2 align="center" id="link">Room Id : {{ quiz.code }}</h2>
         <button onclick="copyText()"  id="submitQuizBtn" >Copy link to clipboard</button>
-        <form action="{% url 'home_page' %}">
+        <form action="{% url 'teacher_home' %}">
 
             <button type="submit"  id="submitQuizBtn">Home</button>
 
@@ -58,7 +58,7 @@
         {% endfor %}
     </ul>
     <a href="{% url 'view_quiz_results' quiz.id %}">View Quiz Results</a>
-    <a href="{% url 'home_page'%}">dashboard</a> -->
+    <a href="{% url 'teacher_home'%}">dashboard</a> -->
 
     <!-- <script>
         function copyToClipboard() {
