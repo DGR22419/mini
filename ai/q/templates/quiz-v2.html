@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Quiz by QuizBOT</title>
+    <link rel="stylesheet" href="{% static "/css/quiz-v2.css" %}">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Custom Quiz by QuizBOT</h1>
+        <form id="quizForm" method="POST">
+            {% csrf_token %}
+
+            <div class="question-block" id="question1">
+                <label for="question1Input">Quiz Title:</label>
+                <!-- <input type="text" name="title" id="title" required><br><br> -->
+                <div class="options-container">
+                    <input type="text" name="title" value="my quiz" placeholder="Enter quiz title" class="option" required>
+                </div>
+            </div>
+
+            <div id="questionsContainer">
+                <div class="question-block" id="question1">
+                    <label for="question1Input">Question 1</label>
+                    <textarea name="questions" id="question1Input" placeholder="Enter Question here..." required ></textarea>
+                    <div class="options-container">
+                        <input type="text" name="options" placeholder="Option A" class="option" required>
+                    </div>
+                    <div class="options-container">
+                        <input type="text" name="options" placeholder="Option B" class="option" required>
+                    </div>
+                    <div class="options-container">
+                        <input type="text" name="options" placeholder="Option C" class="option" required>
+                    </div>
+                    <div class="options-container">
+                        <input type="text" name="options" placeholder="Option D" class="option" required>
+                    </div>
+                    <div class="question-controls">
+                        <select class="select-answer" name="correct_options" required >
+                            <option value="option1">Option A</option>
+                            <option value="option2">Option B</option>
+                            <option value="option3">Option C</option>
+                            <option value="option4">Option D</option>
+                        </select>
+                        <button type="button" class="delete-question-btn">Delete Question</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="addQuestionBtn">Add Another Question</button>
+            <button type="submit" id="submitQuizBtn">Submit Quiz</button>
+        </form>
+    </div>
+
+    <script src="{% static "/js/quiz-v2.js" %}"></script>
+</body>
+</html>

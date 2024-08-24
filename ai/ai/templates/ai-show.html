@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Quiz by QuizBOT</title>
+    <link rel="stylesheet" href="{% static 'css/ai-show.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Custom Quiz by QuizBOT</h1>
+        <form method="post" action="/q/create/">
+            {% csrf_token %}
+            <div class="quiz-title">
+                <label for="quizTitle">Quiz Title:</label>
+                <input type="text" id="quizTitle" name="title" placeholder="Enter quiz title" value="My Ai quiz" required>
+            </div>
+
+            <div id="question-list">
+                {% for question in questions %}
+                <div class="question-container">
+                    <h2>Question {{ forloop.counter }}</h2>
+                    <input type="text" name="questions" value="{{ question.question }}" placeholder="Enter Question here..." required>
+
+                    <input type="text" name="options" value="{{ question.options.0 }}" placeholder="Option A" required>
+                    <input type="text" name="options" value="{{ question.options.1 }}" placeholder="Option B" required>
+                    <input type="text" name="options" value="{{ question.options.2 }}" placeholder="Option C" required>
+                    <input type="text" name="options" value="{{ question.options.3 }}" placeholder="Option D" required>
+
+                    <select name="correct_options">
+                        <option value="{{ question.answer }}">{{ question.answer }}</option>
+                        <!-- <option value="{{ question.options.1 }}">Option B</option>
+                        <option value="{{ question.options.2 }}">Option C</option>
+                        <option value="{{ question.options.3 }}">Option D</option> -->
+                    </select>
+
+                    <button type="button" class="delete-question">Delete Question</button>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button type="button" class="add-question">Add Another Question</button>
+            <button type="submit" class="submit-quiz">Submit Quiz</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/ai-show.js' %}"></script>
+</body>
+
+</html>
