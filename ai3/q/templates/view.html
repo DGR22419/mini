@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Quiz Results</title>
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables Library -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/view.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Quiz Details Section -->
+        <section class="quiz-details">
+            <h2>Quiz Title: {{ quiz.title }}</h2>
+            <p><strong>Date:</strong> {{ quiz.created_at }}</p>
+            <p><strong>Room Code:</strong> {{ quiz.code }}</p>
+            <p><strong>Duration:</strong> 10 minutes</p>
+        </section>
+
+        <!-- Student Scores Table -->
+        <section class="scores-table">
+            <h3>Student Scores</h3>
+            <table id="resultsTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <!-- <th>Student ID</th> -->
+                        <!-- <th>Score</th> -->
+                        <th>Scored</th>
+                        <!-- <th>Total Marks</th> -->
+                        <!-- <th>Time Taken</th> -->
+                        <!-- <th>Status</th> -->
+                        <th>submitted at</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.user.username }}</td>
+                            <td>{{ result.score }}</td>
+                            <td>{{ result.submitted_at }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Export Options -->
+        <section class="export-options">
+            <button onclick="exportToCSV()">Export to CSV</button>
+            <button onclick="exportToPDF()">Export to PDF</button>
+        </section>
+    </div>
+
+    <script src="{% static 'js/view.js' %}"></script>
+</body>
+</html>
