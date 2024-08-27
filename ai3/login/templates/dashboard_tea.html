@@ -51,9 +51,10 @@
             </div>
             <ul class="sidebar-menu">
                 <li><a href="#"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
-                <!-- <li><a href="#" onclick="createQuiz()"><i class="fas fa-plus"></i><span>Create a Quiz</span></a></li> -->
+                <li><a href="#" onclick="createQuiz()"><i class="fas fa-plus"></i><span>Create a Quiz</span></a></li>
+                <li><a href="#" onclick="aiQuiz()"><i class="fas fa-plus"></i><span>Generate Quiz Using AI</span></a></li>
                 <!-- <li><a href="#" onclick="joinQuiz()"><i class="fas fa-key"></i><span>Join Quiz </span></a></li> -->
-                <li><a href="#"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                {% comment %} <li><a href="#"><i class="fas fa-user"></i><span>Profile</span></a></li> {% endcomment %}
                 <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
             </ul>
         </aside>
@@ -129,6 +130,7 @@
                                 <th>Title</th>
                                 <th>Code</th>
                                 <th>Created At</th>
+                                <th>View Questions</th>
                                 <th>View Details</th>
                                 <th>delete</th>
                             </tr>
@@ -140,7 +142,8 @@
                                     <td>{{ quiz.code }}</td>
                                     <td>{{ quiz.created_at }}</td>
                                     <!-- <td>{{ quiz.id }}</td> -->
-                                    <td><a href="/q/view/{{ quiz.id }}">view details</a></td>
+                                    <td><a href="{% url 'view_questions' quiz.id %}">View Questions</a></td>
+                                    <td><a href="/q/view/{{ quiz.id }}">View Details</a></td>
                                     <td><a href="/q/quiz/delete/{{ quiz.id }}">delete</a></td>
                                 </tr>
                             {% empty %}

@@ -13,4 +13,5 @@ urlpatterns = [
     # path('quiz/<int:quiz_id>/results/', views.view_quiz_results, name='view_quiz_results'),
     path('join_room/' , views.join_room , name="join_room") ,
     path('quiz/delete/<int:pk>/', views.delete_quiz, name='delete_quiz'),
+    path('q/view_questions/<int:quiz_id>/', views.view_questions, name='view_questions'),
 ] 

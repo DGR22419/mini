@@ -146,36 +146,87 @@ def join_quiz(request, code):
     
     if request.method == 'POST':
         score = 0
-        
+        user_answers = {}
         questions = quiz.questions.all()
-        total_questions = questions.count() 
+        total_questions = questions.count()
         
         for question in questions:
             user_answer = request.POST.get(f'answers_{question.id}')
-            
+            user_answers[question.id] = user_answer  # Store user answer
+
             if user_answer and user_answer == question.correct_option:
                 score += 1
         
         # Store the quiz result for the user
         QuizResult.objects.create(quiz=quiz, user=request.user, score=score)
 
+        # Store data in the session to be accessed in the result view
         request.session['score'] = score
         request.session['total_questions'] = total_questions
+        request.session['user_answers'] = user_answers
         
         return redirect('quiz_result', quiz_id=quiz.id)
     
     return render(request, 'join_quiz.html', {'quiz': quiz})
 
+
+
+
 @login_required
 def quiz_result(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
-    # results = quiz.results.all()
-
-    # score = request.session.pop('score', None)
     score = request.session.get('score')
     total = request.session.get('total_questions')
+    user_answers = request.session.get('user_answers', {})
+    
+    questions = quiz.questions.all()
+    detailed_results = []
 
-    return render(request, 'result.html', {'quiz': quiz, 'score': score, 'total': total})
+    for question in questions:
+        correct_answer = question.correct_option
+        user_answer = user_answers.get(str(question.id))
+        
+        detailed_results.append({
+            'question': question.question_text,
+            'user_answer': user_answer,
+            'correct_answer': correct_answer,
+            'options': {
+                'option1': question.option1,
+                'option2': question.option2,
+                'option3': question.option3,
+                'option4': question.option4,
+            }
+        })
+
+    return render(request, 'result.html', {
+        'quiz': quiz,
+        'score': score,
+        'total': total,
+        'detailed_results': detailed_results
+    })
+
+
+# @login_required
+# def quiz_result(request, quiz_id):
+#     quiz = get_object_or_404(Quiz, id=quiz_id)
+#     # results = quiz.results.all()
+
+#     # score = request.session.pop('score', None)
+#     score = request.session.get('score')
+#     total = request.session.get('total_questions')
+
+#     return render(request, 'result.html', {'quiz': quiz, 'score': score, 'total': total})
+
+def view_questions(request, quiz_id):
+    quiz = get_object_or_404(Quiz, id=quiz_id)
+    questions = Question.objects.all()
+
+    return render(request, 'view_questions.html', {
+        'quiz': quiz,
+        'questions': questions,
+    })
+
+
 
 @login_required
 def quiz_detail(request, quiz_id):
